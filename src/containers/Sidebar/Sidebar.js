@@ -53,49 +53,60 @@ const useStyles = makeStyles(theme => ({
 
 const drawerWidth = 240;
 
-const menuList = {
-  '住民作業':{
-    icon:<InboxIcon />,
-    items:['住民基本資料', '家屬聯絡資料', '入住登記', '外出登記', '結案作業', '機構人數統計資料', '住民資料統計'],
-    open:false
-  },
-  '護理照護':{
-    icon:<InboxIcon />,
-    items:['住民基本資料', '家屬聯絡資料', '入住登記', '外出登記', '結案作業', '機構人數統計資料', '住民資料統計'],
-    open:false
-  },
-  '營養照護':{
-    icon:<InboxIcon />,
-    items:['住民基本資料', '家屬聯絡資料', '入住登記', '外出登記', '結案作業', '機構人數統計資料', '住民資料統計'],
-    open:false
-  },
-  '社工照護':{
-    icon:<InboxIcon />,
-    items:['住民基本資料', '家屬聯絡資料', '入住登記', '外出登記', '結案作業', '機構人數統計資料', '住民資料統計'],
-    open:false
-  },
-  '醫藥事':{
-    icon:<InboxIcon />,
-    items:['住民基本資料', '家屬聯絡資料', '入住登記', '外出登記', '結案作業', '機構人數統計資料', '住民資料統計'],
-    open:false
-  },
-  '權限管理':{
-    icon: <MailIcon />,
-    items:['住民基本資料', '家屬聯絡資料', '入住登記', '外出登記', '結案作業', '機構人數統計資料', '住民資料統計'],
-    open:false
-  },
-}
-
-
 
 const Sidebar = props => {
   const classes = useStyles();
   const theme = useTheme();
   const [ open, setOpen ] = useState(props.openStatus)
-  const [ status, setStatus ] = useState('住民基本資料')
+  const [ menuList, setMenuList ] = useState({
+    '住民作業':{
+      icon:<InboxIcon />,
+      items:['住民基本資料', '家屬聯絡資料', '入住登記', '外出登記', '結案作業', '機構人數統計資料', '住民資料統計'],
+      open:false
+    },
+    '護理照護':{
+      icon:<InboxIcon />,
+      items:['住民基本資料', '家屬聯絡資料', '入住登記', '外出登記', '結案作業', '機構人數統計資料', '住民資料統計'],
+      open:false
+    },
+    '營養照護':{
+      icon:<InboxIcon />,
+      items:['住民基本資料', '家屬聯絡資料', '入住登記', '外出登記', '結案作業', '機構人數統計資料', '住民資料統計'],
+      open:false
+    },
+    '社工照護':{
+      icon:<InboxIcon />,
+      items:['住民基本資料', '家屬聯絡資料', '入住登記', '外出登記', '結案作業', '機構人數統計資料', '住民資料統計'],
+      open:false
+    },
+    '醫藥事':{
+      icon:<InboxIcon />,
+      items:['住民基本資料', '家屬聯絡資料', '入住登記', '外出登記', '結案作業', '機構人數統計資料', '住民資料統計'],
+      open:false
+    },
+    '權限管理':{
+      icon: <MailIcon />,
+      items:['住民基本資料', '家屬聯絡資料', '入住登記', '外出登記', '結案作業', '機構人數統計資料', '住民資料統計'],
+      open:false
+    },
+  })
+  const [ status, setStatus ] = useState([Object.keys(menuList)[0], Object.entries(menuList['住民作業'])[1][1][0]])
+
 
   const swichPage = page => {
-    setStatus(page)
+    const fixedStatus = [ ...status ]
+    fixedStatus[0] = page
+    setStatus(fixedStatus)
+    props.onSetStatus(status)
+    const fixedMenu = { ...menuList }
+    fixedMenu[page]['open'] = !Object.values(menuList[page])[2]
+    setMenuList(fixedMenu)
+  }
+
+  const swichSubPage = subPage => {
+    const fixedStatus = [ ...status ]
+    fixedStatus[1] = subPage
+    setStatus(fixedStatus)
     props.onSetStatus(status)
   }
 
@@ -108,6 +119,7 @@ const Sidebar = props => {
     setOpen(props.openStatus)
     props.onSetStatus(status)
   })
+
 
   return(
     <div className={classes.root}>
@@ -132,12 +144,12 @@ const Sidebar = props => {
               <ListItem button key={item} onClick={()=>swichPage(item[0])}>
                 <ListItemIcon>{item[1].icon}</ListItemIcon>
                 <ListItemText primary={item[0]} />
-                {item[1].open ? <ExpandLess /> : <ExpandMore />}
+                {item[1].open ? <ExpandMore /> : <ExpandLess />}
               </ListItem>
               <Collapse in={item[1].open} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                   {item[1].items.map(item=>
-                    <ListItem button className={classes.nested}>
+                    <ListItem button className={classes.nested} onClick={()=>swichSubPage(item)}>
                       <ListItemText primary={item} /></ListItem>)}
                 </List>
               </Collapse>

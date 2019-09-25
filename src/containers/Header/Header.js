@@ -81,11 +81,11 @@ const Header = props => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            {status}
+            {status[0]}
           </Typography>
           <ChevronRightIcon className={classes.subHeader}/>
           <Typography variant="h6" noWrap className={classes.subHeader}>
-            {status}
+            {status[1]}
           </Typography>
         </Toolbar>
       </AppBar>
