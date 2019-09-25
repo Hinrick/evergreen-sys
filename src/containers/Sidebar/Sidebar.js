@@ -39,11 +39,14 @@ const useStyles = makeStyles(theme => ({
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
   },
+  list:{
+    flexDirection:'column'
+  },
   subMenu:{
     display:'none'
   },
   nested: {
-    paddingLeft: theme.spacing(4),
+    paddingLeft: theme.spacing(9),
   },
 }));
 
@@ -123,20 +126,22 @@ const Sidebar = props => {
           </IconButton>
         </div>
         <Divider />
-        <List>
+        <List className={classes.list}>
           {Object.entries(menuList).map((item , index) => (
-            <ListItem button key={item} onClick={()=>swichPage(item[0])}>
-              <ListItemIcon>{item[1].icon}</ListItemIcon>
-              <ListItemText primary={item[0]} />
-              {item[1].open ? <ExpandLess /> : <ExpandMore />}
-              <Collapse in={true} timeout="auto" unmountOnExit>
+            <List>
+              <ListItem button key={item} onClick={()=>swichPage(item[0])}>
+                <ListItemIcon>{item[1].icon}</ListItemIcon>
+                <ListItemText primary={item[0]} />
+                {item[1].open ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+              <Collapse in={item[1].open} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                  <ListItem button className={classes.nested}>
-                    {item[1].items.map(item=><ListItemText primary={item} />)}
-                  </ListItem>
+                  {item[1].items.map(item=>
+                    <ListItem button className={classes.nested}>
+                      <ListItemText primary={item} /></ListItem>)}
                 </List>
               </Collapse>
-            </ListItem>
+            </List>
           ))}
         </List>
         <Divider />
