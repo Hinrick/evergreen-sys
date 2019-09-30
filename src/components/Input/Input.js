@@ -3,6 +3,7 @@ import React from 'react';
 import {
   makeStyles,
   Button,
+
 } from '@material-ui/core'
 
 // import DateFnsUtils from '@date-io/date-fns'
@@ -86,6 +87,9 @@ const RenderInput = props  => {
         //     //   />
         //   // </MuiPickersUtilsProvider>
         //     break
+        case ('select'):
+          inputElement =
+        break
         default:
             inputElement = <input
                 // className={inputClasses.join(' ')}
