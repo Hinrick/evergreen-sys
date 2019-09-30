@@ -6,11 +6,11 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider'
+
+import RenderInput from '../../components/Input/Input'
 
 const useStyles = makeStyles({
   card: {
-    marginLeft:'-70px',
     minWidth: 275,
   },
   cardheader:{
@@ -43,11 +43,25 @@ const BasicInformationList = props => {
   }
 
   return (
-    <div>
       <Card className={classes.card}>
         <CardContent>
+          {/* <RenderInput
+            elementType='button'
+            buttonType='primary'
+          >Test</RenderInput>
+          <RenderInput
+            elementType='button'
+            buttonType='secondary'
+            IsDisable={true}
+          >Test</RenderInput>
+          <RenderInput
+            elementType='updloadButton'
+          />
+          <RenderInput
+            elementType='datePicker'
+          /> */}
           <CardContent className={classes.cardheader}>
-            <Typography className={classes.posheader} variant="h5" component="h2">
+            <Typography variant="h5" component="h2">
               吳文貴
             </Typography>
             <Typography className={classes.pos} color="textSecondary">
@@ -62,120 +76,44 @@ const BasicInformationList = props => {
               <span className={classes.bodyheader}>出生日期 : </span><span>2016-01-09</span>
             </Typography>
             <Typography>
-              <span className={classes.bodyheader}>性別 : </span><span>男</span>
+              <span className={classes.bodyheader}>性別 :</span><span>男</span>
             </Typography>
           </CardContent>
           { isShow &&
             <CardContent>
-              <Divider />
-              <Typography variant="h5" component="h1" style={{marginTop:'20px'}}>
-                住民基本資料
+              <Typography variant="body2" component="p">
+                男
               </Typography>
-              <Typography>
-                <span className={classes.bodyheader}>入住日期 : </span><span>2016-01-09</span>
+              <Typography variant="body2" component="p">
+                男
               </Typography>
-              <Divider />
-              <Typography variant="h5" component="h1" style={{marginTop:'20px'}}>
-                家屬聯絡資料
+              <Typography variant="body2" component="p">
+                男
               </Typography>
-              <Typography>
-                <span className={classes.bodyheader}>入住日期 : </span><span>2016-01-09</span>
+              <Typography variant="body2" component="p">
+                男
               </Typography>
-              <Divider />
-              <Typography variant="h5" component="h1" style={{marginTop:'20px'}}>
-                入住登記
+              <Typography variant="body2" component="p">
+                男
               </Typography>
-              <Typography>
-                <span className={classes.bodyheader}>入住日期 : </span><span>2016-01-09</span>
+              <Typography variant="body2" component="p">
+                男
               </Typography>
-              <Divider />
-              <Typography variant="h5" component="h1" style={{marginTop:'20px'}}>
-                外出登記
+              <Typography variant="body2" component="p">
+                男
               </Typography>
-              <Typography>
-                <span className={classes.bodyheader}>入住日期 : </span><span>2016-01-09</span>
-              </Typography>
-              <Divider />
-              <Typography variant="h5" component="h1" style={{marginTop:'20px'}}>
-                結案作業
-              </Typography>
-              <Typography>
-                <span className={classes.bodyheader}>入住日期 : </span><span>2016-01-09</span>
+              <Typography variant="body2" component="p">
+                男
               </Typography>
             </CardContent>
           }
-          <CardActions>
-            <Button size="small" onClick={showMore}>更多資訊</Button>
-          </CardActions>
         </CardContent>
-      </Card>
-      <Card className={classes.card}>
         <CardContent>
-          <CardContent className={classes.cardheader}>
-            <Typography className={classes.posheader} variant="h5" component="h2">
-              吳文貴
-            </Typography>
-            <Typography className={classes.pos} color="textSecondary">
-              2F / 206-C
-            </Typography>
-          </CardContent>
-          <CardContent>
-            <Typography>
-              <span className={classes.bodyheader}>入住日期 : </span><span>2016-01-09</span>
-            </Typography>
-            <Typography>
-              <span className={classes.bodyheader}>出生日期 : </span><span>2016-01-09</span>
-            </Typography>
-            <Typography>
-              <span className={classes.bodyheader}>性別 : </span><span>男</span>
-            </Typography>
-          </CardContent>
-          { isShow &&
-            <CardContent>
-              <Divider />
-              <Typography variant="h5" component="h1" style={{marginTop:'20px'}}>
-                住民基本資料
-              </Typography>
-              <Typography>
-                <span className={classes.bodyheader}>入住日期 : </span><span>2016-01-09</span>
-              </Typography>
-              <Divider />
-              <Typography variant="h5" component="h1" style={{marginTop:'20px'}}>
-                家屬聯絡資料
-              </Typography>
-              <Typography>
-                <span className={classes.bodyheader}>入住日期 : </span><span>2016-01-09</span>
-              </Typography>
-              <Divider />
-              <Typography variant="h5" component="h1" style={{marginTop:'20px'}}>
-                入住登記
-              </Typography>
-              <Typography>
-                <span className={classes.bodyheader}>入住日期 : </span><span>2016-01-09</span>
-              </Typography>
-              <Divider />
-              <Typography variant="h5" component="h1" style={{marginTop:'20px'}}>
-                外出登記
-              </Typography>
-              <Typography>
-                <span className={classes.bodyheader}>入住日期 : </span><span>2016-01-09</span>
-              </Typography>
-              <Divider />
-              <Typography variant="h5" component="h1" style={{marginTop:'20px'}}>
-                結案作業
-              </Typography>
-              <Typography>
-                <span className={classes.bodyheader}>入住日期 : </span><span>2016-01-09</span>
-              </Typography>
-            </CardContent>
-          }
           <CardActions>
             <Button size="small" onClick={showMore}>更多資訊</Button>
           </CardActions>
         </CardContent>
       </Card>
-    </div>
-
     )
   }
 
