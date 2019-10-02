@@ -22,7 +22,6 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 const useStyles = makeStyles(theme => ({
   root: {
     flex:'block',
-    width: '100%',
     maxWidth: 360,
   },
   drawer: {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux'
 
 import Header from './Header/Header'
 import Sidebar from './Sidebar/Sidebar'
@@ -7,7 +8,7 @@ import BasicInformationList from './BasicInformation/BasicInformationList'
 
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
-import {CssBaseline, Typography } from '@material-ui/core'
+import { CssBaseline } from '@material-ui/core'
 
 
 const drawerWidth = 240;
@@ -41,10 +42,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const MainPage = () => {
+const MainPage = props => {
   const classes = useStyles()
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState('')
+
 
   useEffect(()=>{
 
@@ -75,14 +77,20 @@ const MainPage = () => {
         className={clsx(classes.content, {
           [classes.contentShift]: open,
         })}
-
-        style={{paddingLeft:'0px'}}
       >
         <div className={classes.drawerHeader} />
-        <BasicInformationList />
+        <BasicInformationList
+        />
       </main>
     </div>
   );
 }
 
-export default MainPage
+const mapStateToProps = props => {
+  return{
+
+  }
+}
+
+
+export default connect(mapStateToProps)(MainPage)
