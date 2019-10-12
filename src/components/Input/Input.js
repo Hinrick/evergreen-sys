@@ -20,7 +20,7 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/picker
 
 const useStyles = makeStyles(theme => ({
   root:{
-    margin: theme.spacing(1),
+    margin: 0
   },
   button: {
     backgroundColor:props=> props.buttonType === 'primary' ? '#50B994':'#be2c36'
@@ -102,6 +102,8 @@ const RenderInput = props  => {
           inputElement = (
             <div className={classes.root}>
               <Button
+                { ...props }
+                onClick={props.click}
                 variant="contained"
                 color="primary"
                 disabled={props.IsDisable}
