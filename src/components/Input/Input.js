@@ -159,7 +159,9 @@ const RenderInput = props  => {
           inputElement = (
             <div className={classes.root}>
               {props.inputlabel? <InputLabel>{props.inputlabel}</InputLabel> : null}
-              <NativeSelect>
+              <NativeSelect
+                {...props} 
+              >
                 {selectOption.map(item=><option key={item.value} value={item.value}>{item.label}</option>) }
               </NativeSelect>
             </div>
@@ -169,6 +171,7 @@ const RenderInput = props  => {
           inputElement = (
             <div className={classes.root}>
               <CssTextField
+                {...props}
                 onChange={handleDataChange}
                 label={props.inputlabel}
               />
@@ -179,6 +182,7 @@ const RenderInput = props  => {
           inputElement = (
             <div className={classes.root}>
               <FormControlLabel
+                {...props}
                 label={props.inputlabel}
                 control={<CustomizedColorCheckbox />}
               />
