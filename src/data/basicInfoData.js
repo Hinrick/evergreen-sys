@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 
-const basicInfo = {
+export const basicInfo = {
   Basic: [
     {
       elementType: "input",
@@ -75,15 +75,15 @@ const basicInfo = {
   ]
 };
 
-const basicInfoReducer = (state, action) => {
-  switch (action.type) {
-    case "INIT_ITEM":
-      return state;
-    case "ADD_ITEM":
-      return state;
-    default:
-      throw new Error("Hello World");
-  }
-};
+// const basicInfoReducer = (state, action) => {
+//   switch (action.type) {
+//     case "INIT_ITEM":
+//       return state;
+//     case "ADD_ITEM":
+//       return state;
+//     default:
+//       throw new Error("Hello World");
+//   }
+// };
 
-export const BasicInfoReducer = useReducer(basicInfoReducer, basicInfo);
+// export const BasicInfoReducer = useReducer(basicInfoReducer, basicInfo);
