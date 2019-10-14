@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 
 import { makeStyles } from '@material-ui/core'
-
 import RenderInput from '../Input/Input'
+import clear from '../../assests/icons/clear-24px.svg'
+
 
 const useStyles = makeStyles(theme=>({
     root:{
@@ -35,7 +36,7 @@ const useStyles = makeStyles(theme=>({
 
     },
     buttonContainer:{
-      borderRadius:5,  
+      borderRadius:5,
       position: 'fixed',
       background:'#fff',
       backgroundColor:'#fff',
@@ -45,7 +46,12 @@ const useStyles = makeStyles(theme=>({
       zIndex: 5000,
       padding:20,
     //   boxShadow: '0 -5px 10px #fff',
-    }
+  },
+  clear:{
+    width:'100%',
+    height:20,
+    backgroundColor:'#000'
+  }
 }))
 
 const Modal = props => {
@@ -56,8 +62,9 @@ const Modal = props => {
         modal=(
             <div className={classes.backdrop}>
                 <div className={classes.modal} >
+                    <div ><i class="material-icons md-18">face</i></div>
                     <div lassName={classes.innerContainer}>{props.children}</div>
-                </div> 
+                </div>
                 <div className={classes.buttonContainer}>
                     <RenderInput
                         elementType='button'

@@ -85,7 +85,7 @@ const Seletion = props => {
           return(
             <div className={classes.container}>
             <h2>{item[0]}</h2>
-              {item[1].map(subitem=><li>標題: {subitem.inputlabel} 類型:{subitem.elementType}</li>)}
+              {item[1].map(subitem=><li>標題: {subitem.inputlabel}   類型:{subitem.elementType}</li>)}
             {/* Add selecton section */}
             <div className={classes.addTypeButton}>
               <RenderInput
