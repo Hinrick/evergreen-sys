@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const basicInfo = {
-  Basic: [
+  BasicInfo: [
     {
       elementType: "input",
       inputlabel: "姓名"

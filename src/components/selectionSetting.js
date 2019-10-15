@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { makeStyles, Divider } from '@material-ui/core'
 import { useSelector } from 'react-redux'
 
-import RenderInput from "../components/Input/Input";
+import RenderInput from "../components/Input/Input"
+import { BASIC_INFO_CATEGORY } from '../constants/index'
 
 
 const useStyles = makeStyles(theme=>({
@@ -29,9 +30,6 @@ const useStyles = makeStyles(theme=>({
   continue:{
     fontColor:'#a5a5a5'
   }
-
-
-
 }))
 
 
@@ -82,33 +80,37 @@ const Seletion = props => {
     <div className={classes.root}>
       <h1>{basicInfo.title}設定</h1>
       {Object.entries(basicInfo.basic).map(item=>{
-          return(
+          return (
             <div className={classes.container}>
-            <h2>{item[0]}</h2>
-              {item[1].map(subitem=><li>標題: {subitem.inputlabel}   類型:{subitem.elementType}</li>)}
-            {/* Add selecton section */}
-            <div className={classes.addTypeButton}>
-              <RenderInput
-                elementType='checkbox'
-                inputlabel='新增填充項目'
-                value='input'
-                checked={selectType}
-                onChange={handleChange}
-              />
-              <RenderInput
-                elementType='checkbox'
-                inputlabel='新增選擇項目'
-                value='selection'
-                checked={!selectType}
-                onChange={handleChange}
-              />
-            </div>
-            {addTyleSelection}
-            <Divider />
+              <h2>{BASIC_INFO_CATEGORY[item[0]]}</h2>
+              {item[1].map(subitem => (
+                <li>
+                  標題: {subitem.inputlabel} 類型:{subitem.elementType}
+                </li>
+              ))}
+              {/* Add selecton section */}
+              <div className={classes.addTypeButton}>
+                <RenderInput
+                  elementType="checkbox"
+                  inputlabel="新增填充項目"
+                  value="input"
+                  checked={selectType}
+                  onChange={handleChange}
+                />
+                <RenderInput
+                  elementType="checkbox"
+                  inputlabel="新增選擇項目"
+                  value="selection"
+                  checked={!selectType}
+                  onChange={handleChange}
+                />
+              </div>
+              {addTyleSelection}
+              <Divider />
 
-            <br />
+              <br />
             </div>
-          )
+          );
       })}
     </div>
   )
