@@ -13,10 +13,19 @@ export const BASIC_INFO_CATEGORY = {
     FinishDateInfo: '結案作業'
 }
 
+export const NURSE_CARE_CATEGORY = {
+    ConditionAssessmentForm: '身體健康狀況評估',
+    KarnofskyScale: '科氏量表',
+    BarthelsScal: '巴氏量表(ADL)',
+    InstrucmentalActivitiesOfDaily: '工作性日常生活活動量表',
+    SPMQS:'認知功能量表',
+    FallScale:'跌倒危險因子子評估表',
+}
+
 
 export const INPUT_TYPE = {
-    input : '',
-    checkbox: '',
-    datepicker: '',
-    
+    input : '開放式問題',
+    checkbox: '2選1相關問題',
+    datePicker: '時間相關問題',
+    select:'多選1相關問題'
 }

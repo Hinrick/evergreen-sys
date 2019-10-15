@@ -3,7 +3,7 @@ import { makeStyles, Divider } from '@material-ui/core'
 import { useSelector } from 'react-redux'
 
 import RenderInput from "../components/Input/Input"
-import { BASIC_INFO_CATEGORY } from '../constants/index'
+import { BASIC_INFO_CATEGORY, INPUT_TYPE } from '../constants/index'
 
 
 const useStyles = makeStyles(theme=>({
@@ -15,7 +15,17 @@ const useStyles = makeStyles(theme=>({
     '& li':{
       listStyleType:'none',
       paddingBottom:9
+    },
+    '& h2':{
+      color:'#00352d'
     }
+  },
+  listContainer:{
+    display:'grid'
+  },
+  sublistContainer:{
+    fontSize:'80%',
+    color:'#bababa'
   },
   addTypeButton:{
     display:'flex',
@@ -42,9 +52,7 @@ const Seletion = props => {
 
   const handleChange = () => {
     setSelectType(!selectType)
-    console.log(selectType)
   }
-
 
   let addTyleSelection = (
     <section className={classes.addSelectSection}>
@@ -83,23 +91,27 @@ const Seletion = props => {
           return (
             <div className={classes.container}>
               <h2>{BASIC_INFO_CATEGORY[item[0]]}</h2>
+              <h4>目前所有題組</h4>
               {item[1].map(subitem => (
-                <li>
-                  標題: {subitem.inputlabel} 類型:{subitem.elementType}
+                <li className={classes.listContainer}>
+                  <span>問題名稱: {subitem.inputlabel}</span>
+                  <span className={classes.sublistContainer}>問題類型: {INPUT_TYPE[subitem.elementType]}</span>
                 </li>
               ))}
               {/* Add selecton section */}
+              <h4>新增問題</h4>
               <div className={classes.addTypeButton}>
+
                 <RenderInput
                   elementType="checkbox"
-                  inputlabel="新增填充項目"
+                  inputlabel="新增開放式問題選項"
                   value="input"
                   checked={selectType}
                   onChange={handleChange}
                 />
                 <RenderInput
                   elementType="checkbox"
-                  inputlabel="新增選擇項目"
+                  inputlabel="新增選擇性問題選項"
                   value="selection"
                   checked={!selectType}
                   onChange={handleChange}
