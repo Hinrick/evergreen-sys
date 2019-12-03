@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react'
 
-import { makeStyles, Divider } from '@material-ui/core'
+import { makeStyles, Divider, Tab, Tabs } from '@material-ui/core'
 
 import RenderInput from '../../components/Input/Input'
 
@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme=>({
         paddingTop:5,
         margin:0,
         '& h1':{
-            paddingTop:15,
+            // paddingTop:15,
             margin:0   
         },  
         '& RenderInput':{
@@ -33,13 +33,30 @@ const basicInfoAddReducer = (state, action) => {
     }
 };
 
-const basicInfoSelect = [{
+const basicInfoSelect = [
+    {
        elementType:'input',
        inputlabel:'姓名'
     },
     {
         elementType: 'input',
         inputlabel: '身分證字號'
+    },
+    {
+        elementType: 'input',
+        inputlabel: '性別'
+    },
+    {
+        elementType: 'input',
+        inputlabel: '年齡'
+    },
+    {
+        elementType: 'input',
+        inputlabel: '身份別'
+    },
+    {
+        elementType: 'input',
+        inputlabel: '是否有重大病史'
     },
     {
         elementType: 'datePicker',
@@ -49,6 +66,43 @@ const basicInfoSelect = [{
         elementType: 'datePicker',
         inputlabel: '入住日期'
     },
+]
+
+
+
+const familyInfoSelect = [
+    {
+        elementType:'input',
+        inputlabel:'家庭成員'
+     },
+     {
+        elementType:'input',
+        inputlabel:'曾任工作'
+     },
+     {
+        elementType:'input',
+        inputlabel:'專長與嗜好'
+     },
+     {
+        elementType:'input',
+        inputlabel:'主要照顧決策者'
+     },
+     {
+        elementType:'input',
+        inputlabel:'主要照顧決策者資料'
+     },
+     {
+        elementType:'input',
+        inputlabel:'次要照顧決策者'
+     },
+     {
+        elementType:'input',
+        inputlabel:'次要照顧決策者資料'
+     },
+     {
+        elementType:'input',
+        inputlabel:'家系圖'
+     },
 ]
 
 
@@ -72,6 +126,17 @@ const BasicInfoAdd = props => {
 
     return(       
         <div className={classes.root}>
+              <Tabs
+                // value={value}
+                indicatorColor="primary"
+                textColor="primary"
+                // onChange={handleChange}
+                aria-label="disabled tabs example"
+            >
+                <Tab label="Active" />
+                <Tab label="Disabled" disabled />
+                <Tab label="Active" />
+            </Tabs>
             <h1> 基本資料 </h1>
             {BasicInfo}
             <br />

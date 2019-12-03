@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 import {
   makeStyles,
@@ -16,6 +16,8 @@ import DisplayForm from "../../components/displayForm";
 import RenderInput from "../../components/Input/Input";
 import BasicInfoAdd from "../BasicInformation/BasicInformationAdd";
 import Selection from '../../components/selectionSetting'
+import useHttp from '../../hooks/http'
+
 
 const useStyles = makeStyles({
   section: {
@@ -27,7 +29,10 @@ const useStyles = makeStyles({
   },
   card: {
     minWidth: 275,
-    margin: 15
+    margin: 15,
+    padding: 0 
+  },
+  cardheader:{
   },
   bullet: {
     display: "inline-block",
@@ -49,6 +54,16 @@ const BasicInformationList = props => {
   const [open, setOpen] = useState(false);
   const [displayModal, setDisplayModal] = useState();
 
+  const {
+    isLoading,
+    error,
+    data,
+    sendRequest,
+    reqExtra,
+    reqIdentifer,
+    clear
+  } = useHttp();
+
 
   const showMore = () => {
     setIsShow(!isShow);
@@ -66,6 +81,16 @@ const BasicInformationList = props => {
     setDisplayModal(screen)
   }
 
+
+  // const addMemberHandler = useCallback(data => {
+  //   sendRequest(
+  //     '',
+  //     'POST',
+  //     JSON.stringify(data),
+  //     ingredient,
+  //     'ADD_INGREDIENT'
+  //   );
+  // }, [sendRequest]);
 
   return (
     <div className={classes.root}>
